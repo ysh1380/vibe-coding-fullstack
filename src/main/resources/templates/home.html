@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Vibe Coding | Premium Tech Education</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700;800&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <style type="text/tailwindcss">
+        :root {
+            --samsung-blue: #0376ff;
+            --samsung-black: #000000;
+            --samsung-gray-bg: #f7f7f7;
+            --samsung-text-main: #000000;
+            --samsung-text-sub: #555555;
+        }
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            background-color: #ffffff;
+            color: var(--samsung-text-main);
+        }
+        .premium-shadow {
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+        }
+        .nav-link {
+            @apply text-[14px] font-medium text-black hover:text-[var(--samsung-blue)] transition-colors duration-300;
+        }
+        .samsung-btn-primary {
+            @apply bg-black text-white px-8 py-3 rounded-full font-bold hover:bg-gray-800 transition-all duration-300 text-[14px];
+        }
+        .samsung-btn-outline {
+            @apply border-2 border-black text-black px-8 py-3 rounded-full font-bold hover:bg-black hover:text-white transition-all duration-300 text-[14px];
+        }
+        .samsung-btn-blue {
+            @apply bg-[var(--samsung-blue)] text-white px-8 py-3 rounded-full font-bold hover:opacity-90 transition-all duration-300 text-[14px];
+        }
+    </style>
+</head>
+
+<body class="antialiased">
+    <header class="fixed top-0 w-full z-50 bg-white/90 backdrop-blur-md border-b border-gray-100">
+        <div class="max-w-[1440px] mx-auto px-6 lg:px-12 h-16 flex items-center justify-between">
+            <div class="flex items-center gap-10">
+                <a class="text-[20px] font-extrabold tracking-tighter flex items-center gap-2" href="#">
+                    <span class="material-symbols-outlined text-[var(--samsung-blue)] font-bold">bolt</span>
+                    VIBE CODING
+                </a>
+                <nav class="hidden lg:flex items-center gap-8">
+                    <a class="nav-link" href="#">커리큘럼</a>
+                    <a class="nav-link" href="#">커뮤니티</a>
+                    <a class="nav-link" href="#">멘토십</a>
+                    <a class="nav-link" href="#">성공 사례</a>
+                </nav>
+            </div>
+            <div class="flex items-center gap-6">
+                <button class="text-[14px] font-bold">로그인</button>
+                <button class="samsung-btn-primary">시작하기</button>
+            </div>
+        </div>
+    </header>
+    <main>
+        <section class="relative bg-[var(--samsung-gray-bg)] overflow-hidden min-h-[85vh] flex items-center pt-16">
+            <div class="max-w-[1440px] mx-auto px-6 lg:px-12 grid lg:grid-cols-2 items-center gap-12 w-full">
+                <div class="z-10 text-center lg:text-left">
+                    <span
+                        class="text-[var(--samsung-blue)] font-bold tracking-[0.2em] text-[12px] uppercase mb-4 block">Future
+                        of Education</span>
+                    <h1 class="text-5xl lg:text-7xl font-extrabold leading-[1.1] mb-8 tracking-tight">
+                        당신의 코딩에<br />
+                        바이브를 더하다
+                    </h1>
+                    <p
+                        class="text-lg lg:text-xl text-[var(--samsung-text-sub)] mb-10 max-w-xl mx-auto lg:mx-0 leading-relaxed font-light">
+                        트렌디한 커리큘럼과 강력한 개발자 커뮤니티.<br />
+                        삼성 스타일의 정교함으로 완성된 최신 코딩 교육을 경험하세요.
+                    </p>
+                    <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+                        <button class="samsung-btn-blue text-lg">지금 바로 합류하기</button>
+                        <button class="samsung-btn-outline text-lg">자세히 보기</button>
+                    </div>
+                </div>
+                <div class="relative flex justify-center lg:justify-end">
+                    <div class="relative w-full max-w-[600px]">
+                        <img alt="Education Concept"
+                            class="w-full h-auto rounded-[40px] premium-shadow grayscale hover:grayscale-0 transition-all duration-700 object-cover"
+                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuCm8cgI7L7omxGaL2Q9ouZbjClC7V_RPP9qb_442AZUPouZZmzlMrbRJ0SQaGc_A4Z6tCkPxlwy0qm48n0UN4I8fdSpVBCF0tA1y1YsLkv7hHTnMd_Fq1e1o0V-tKetRRVS_35kVkxIryubcNehwv_FpQXljZe78ZxZdWXZUJ26YPgJUyr58AkKA9YxsLX3WfLu08v1tUCgBLSY9ynQtxBH5DdkiyfwndgG07SzoDWOnrhIgkM7KCzVh-lTEyo1jY4vZzI3_4MK4kA" />
+                        <div class="absolute -bottom-6 -left-6 bg-white p-6 rounded-2xl premium-shadow hidden md:block">
+                            <div class="flex items-center gap-4">
+                                <div class="bg-blue-100 p-3 rounded-full">
+                                    <span class="material-symbols-outlined text-[var(--samsung-blue)]">verified</span>
+                                </div>
+                                <div>
+                                    <p class="text-[12px] text-gray-500 font-bold">Certified Course</p>
+                                    <p class="text-[16px] font-black">Top 1% Curriculum</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="py-24 lg:py-32 bg-white">
+            <div class="max-w-[1440px] mx-auto px-6 lg:px-12">
+                <div class="text-center mb-20">
+                    <h2 class="text-4xl lg:text-5xl font-extrabold mb-6 tracking-tight">Vibe Coding만의 독보적 가치</h2>
+                    <p class="text-[var(--samsung-text-sub)] text-lg max-w-2xl mx-auto">글로벌 스탠다드에 맞춘 프리미엄 교육 서비스를 제공합니다.
+                    </p>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <div
+                        class="bg-[var(--samsung-gray-bg)] p-12 rounded-[32px] hover:bg-white hover:premium-shadow transition-all duration-500 group border border-transparent hover:border-gray-100">
+                        <div class="mb-8">
+                            <span
+                                class="material-symbols-outlined text-5xl text-[var(--samsung-blue)] group-hover:scale-110 transition-transform duration-500">groups</span>
+                        </div>
+                        <h3 class="text-2xl font-bold mb-4">커뮤니티 중심 학습</h3>
+                        <p class="text-[var(--samsung-text-sub)] leading-relaxed">
+                            전국 1만 명 이상의 수강생들과 실시간으로 소통하며 함께 성장합니다. 매주 열리는 네트워킹 데이에 초대합니다.
+                        </p>
+                        <a class="mt-8 inline-flex items-center text-[var(--samsung-blue)] font-bold group-hover:underline"
+                            href="#">
+                            더 알아보기 <span class="material-symbols-outlined text-sm ml-1">chevron_right</span>
+                        </a>
+                    </div>
+                    <div
+                        class="bg-[var(--samsung-gray-bg)] p-12 rounded-[32px] hover:bg-white hover:premium-shadow transition-all duration-500 group border border-transparent hover:border-gray-100">
+                        <div class="mb-8">
+                            <span
+                                class="material-symbols-outlined text-5xl text-[var(--samsung-blue)] group-hover:scale-110 transition-transform duration-500">trending_up</span>
+                        </div>
+                        <h3 class="text-2xl font-bold mb-4">트렌드 맞춤 커리큘럼</h3>
+                        <p class="text-[var(--samsung-text-sub)] leading-relaxed">
+                            실리콘밸리 현업 개발자들이 직접 설계한 최신 기술 스택 기반의 교육 과정을 매달 업데이트합니다.
+                        </p>
+                        <a class="mt-8 inline-flex items-center text-[var(--samsung-blue)] font-bold group-hover:underline"
+                            href="#">
+                            더 알아보기 <span class="material-symbols-outlined text-sm ml-1">chevron_right</span>
+                        </a>
+                    </div>
+                    <div
+                        class="bg-[var(--samsung-gray-bg)] p-12 rounded-[32px] hover:bg-white hover:premium-shadow transition-all duration-500 group border border-transparent hover:border-gray-100">
+                        <div class="mb-8">
+                            <span
+                                class="material-symbols-outlined text-5xl text-[var(--samsung-blue)] group-hover:scale-110 transition-transform duration-500">psychology</span>
+                        </div>
+                        <h3 class="text-2xl font-bold mb-4">전문가 1:1 멘토링</h3>
+                        <p class="text-[var(--samsung-text-sub)] leading-relaxed">
+                            코드 한 줄에 대한 깊이 있는 피드백부터 커리어 로드맵 설계까지, 시니어 멘토진이 밀착 관리합니다.
+                        </p>
+                        <a class="mt-8 inline-flex items-center text-[var(--samsung-blue)] font-bold group-hover:underline"
+                            href="#">
+                            더 알아보기 <span class="material-symbols-outlined text-sm ml-1">chevron_right</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="py-24 lg:py-32 bg-[var(--samsung-gray-bg)]">
+            <div class="max-w-[1440px] mx-auto px-6 lg:px-12">
+                <div class="flex flex-col md:flex-row justify-between items-end mb-16 gap-6">
+                    <div>
+                        <h2 class="text-4xl lg:text-5xl font-extrabold tracking-tight mb-4">이미 수많은 분들이<br />바이브와 성장했습니다
+                        </h2>
+                        <p class="text-[var(--samsung-text-sub)] text-lg">성공한 수강생들의 진솔한 이야기를 확인해 보세요.</p>
+                    </div>
+                    <button class="samsung-btn-outline">전체 사례 보기</button>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <div class="bg-white p-8 rounded-[24px] premium-shadow">
+                        <div class="flex items-center gap-4 mb-6">
+                            <img alt="User" class="w-14 h-14 rounded-full object-cover"
+                                src="https://lh3.googleusercontent.com/aida-public/AB6AXuBY_p41vDJmOE9_T8-2eQ7qb3ItBAKyUVtjUGRP8gAKJO7qFX_M5vZNQZ7nvoNU9DqgFiqIuVNqbtVL-2K__QFUTvjmXGyf6NwAOR4BNEYyJbadEc_Zo5F_MlxGyfVR1EFkiZ2HnfMLcg29uQLRa5287kcAdpmCqieVsNCYrYlDniX9PxYUZXQF5XNsk_WcoGuqPBWld4NNX1h70gZyqZkdUQa77KqNA9z73jl2eNd_aDciOhFCFbqfA_ScWoA12WHqWS4_7qlWipE" />
+                            <div>
+                                <h4 class="font-bold">이지원</h4>
+                                <p
+                                    class="text-[12px] text-[var(--samsung-text-sub)] uppercase font-bold tracking-wider">
+                                    핀테크 시니어 개발자</p>
+                            </div>
+                        </div>
+                        <p class="text-[var(--samsung-text-sub)] leading-relaxed italic">
+                            "단순한 강의가 아닌 실무 프로젝트의 정수를 배웠습니다. 바이브 코딩의 커리큘럼은 제가 만난 어떤 교육보다 정교하고 품격 있었습니다."
+                        </p>
+                    </div>
+                    <div class="bg-white p-8 rounded-[24px] premium-shadow">
+                        <div class="flex items-center gap-4 mb-6">
+                            <img alt="User" class="w-14 h-14 rounded-full object-cover"
+                                src="https://lh3.googleusercontent.com/aida-public/AB6AXuDkyfR3TLGPvyZz6HNI_XXFGOBPqnI4tD7A3MRVxk3F3ZMZgxArYzNhCmQ2I0bz-9SQz35oQccm1ePQAL07wiPl7E_d6OqDDS7oLCAn8E3UHCvw0BSM77X_mw-0T9_JtcjQsYglsIE7cXlI1ILqAATp4YaOy8ptPQaBGe23eElCDPI1hUuTPx_BjbXohKPStzXG1DtE7S-c4OSSlHTG2F9-CR9ed6LFXIIOPR_VFdId4KrINCmuhBXG4eku0GTUuVK_LGXtWFoyCXw" />
+                            <div>
+                                <h4 class="font-bold">박준호</h4>
+                                <p
+                                    class="text-[12px] text-[var(--samsung-text-sub)] uppercase font-bold tracking-wider">
+                                    테크 스타트업 리드</p>
+                            </div>
+                        </div>
+                        <p class="text-[var(--samsung-text-sub)] leading-relaxed italic">
+                            "비전공자임에도 불구하고 바이브 코딩의 체계적인 지원 덕분에 자신감을 얻었습니다. 최고의 선택이었다고 자부합니다."
+                        </p>
+                    </div>
+                    <div class="bg-white p-8 rounded-[24px] premium-shadow">
+                        <div class="flex items-center gap-4 mb-6">
+                            <img alt="User" class="w-14 h-14 rounded-full object-cover grayscale"
+                                src="https://lh3.googleusercontent.com/aida-public/AB6AXuCm8cgI7L7omxGaL2Q9ouZbjClC7V_RPP9qb_442AZUPouZZmzlMrbRJ0SQaGc_A4Z6tCkPxlwy0qm48n0UN4I8fdSpVBCF0tA1y1YsLkv7hHTnMd_Fq1e1o0V-tKetRRVS_35kVkxIryubcNehwv_FpQXljZe78ZxZdWXZUJ26YPgJUyr58AkKA9YxsLX3WfLu08v1tUCgBLSY9ynQtxBH5DdkiyfwndgG07SzoDWOnrhIgkM7KCzVh-lTEyo1jY4vZzI3_4MK4kA" />
+                            <div>
+                                <h4 class="font-bold">김민수</h4>
+                                <p
+                                    class="text-[12px] text-[var(--samsung-text-sub)] uppercase font-bold tracking-wider">
+                                    프론트엔드 개발자</p>
+                            </div>
+                        </div>
+                        <p class="text-[var(--samsung-text-sub)] leading-relaxed italic">
+                            "개발 문화에 대한 갈증이 있었습니다. 이곳에서 만난 동료들과 멘토들의 열정이 저를 완전히 다른 사람으로 만들어주었습니다."
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="py-32 bg-white">
+            <div class="max-w-[1200px] mx-auto px-6 lg:px-12 text-center">
+                <h2 class="text-5xl lg:text-6xl font-extrabold mb-8 tracking-tight">당신의 잠재력을 깨울 시간</h2>
+                <p class="text-xl text-[var(--samsung-text-sub)] mb-12 max-w-2xl mx-auto">
+                    지금 가입하고 전 세계에서 가장 진보된 코딩 교육 환경을 경험하세요.<br /> 7일간의 무료 프리미엄 멤버십 혜택을 드립니다.
+                </p>
+                <div class="flex flex-col sm:flex-row justify-center gap-4">
+                    <input
+                        class="px-8 py-4 bg-[var(--samsung-gray-bg)] border-none rounded-full w-full sm:w-96 focus:ring-2 focus:ring-[var(--samsung-blue)]"
+                        placeholder="이메일 주소를 입력하세요" type="email" />
+                    <button class="samsung-btn-blue text-lg px-12">시작하기</button>
+                </div>
+                <p class="mt-6 text-[14px] text-gray-400 font-medium">현재 12,480명 이상의 개발자가 함께하고 있습니다.</p>
+            </div>
+        </section>
+    </main>
+    <footer class="bg-white border-t border-gray-100 py-16">
+        <div class="max-w-[1440px] mx-auto px-6 lg:px-12">
+            <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-12 mb-16">
+                <div class="col-span-2">
+                    <a class="text-[20px] font-extrabold tracking-tighter flex items-center gap-2 mb-6" href="#">
+                        <span class="material-symbols-outlined text-[var(--samsung-blue)]">bolt</span>
+                        VIBE CODING
+                    </a>
+                    <p class="text-sm text-[var(--samsung-text-sub)] max-w-xs leading-relaxed">
+                        프리미엄 테크 교육의 새로운 기준. 우리는 당신의 코딩 실력 뿐만 아니라 그 이상의 가치를 전달합니다.
+                    </p>
+                </div>
+                <div>
+                    <h5 class="font-bold mb-6 text-sm uppercase tracking-wider">제품</h5>
+                    <ul class="space-y-4 text-sm text-[var(--samsung-text-sub)]">
+                        <li><a class="hover:text-black" href="#">커리큘럼</a></li>
+                        <li><a class="hover:text-black" href="#">부트캠프</a></li>
+                        <li><a class="hover:text-black" href="#">기업 교육</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h5 class="font-bold mb-6 text-sm uppercase tracking-wider">커뮤니티</h5>
+                    <ul class="space-y-4 text-sm text-[var(--samsung-text-sub)]">
+                        <li><a class="hover:text-black" href="#">블로그</a></li>
+                        <li><a class="hover:text-black" href="#">포럼</a></li>
+                        <li><a class="hover:text-black" href="#">채용 공고</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h5 class="font-bold mb-6 text-sm uppercase tracking-wider">지원</h5>
+                    <ul class="space-y-4 text-sm text-[var(--samsung-text-sub)]">
+                        <li><a class="hover:text-black" href="#">고객센터</a></li>
+                        <li><a class="hover:text-black" href="#">FAQ</a></li>
+                        <li><a class="hover:text-black" href="#">문의하기</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h5 class="font-bold mb-6 text-sm uppercase tracking-wider">법적 고지</h5>
+                    <ul class="space-y-4 text-sm text-[var(--samsung-text-sub)]">
+                        <li><a class="hover:text-black" href="#">이용약관</a></li>
+                        <li><a class="hover:text-black" href="#">개인정보처리방침</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="pt-8 border-t border-gray-100 flex flex-col md:flex-row justify-between items-center gap-6">
+                <p class="text-[13px] text-gray-400">© 2024 Vibe Coding Corp. All rights reserved.</p>
+                <div class="flex gap-6">
+                    <a class="text-gray-400 hover:text-black" href="#"><span
+                            class="material-symbols-outlined">share</span></a>
+                    <a class="text-gray-400 hover:text-black" href="#"><span
+                            class="material-symbols-outlined">language</span></a>
+                    <a class="text-gray-400 hover:text-black font-bold text-sm" href="#">KR (한국어)</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+</body>
+
+</html>
