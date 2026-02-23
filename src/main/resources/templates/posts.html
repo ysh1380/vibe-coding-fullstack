@@ -60,9 +60,15 @@
 
     <main class="pt-24 pb-32">
         <section class="max-w-[1440px] mx-auto px-6 lg:px-12">
-            <div class="mb-16">
-                <h1 class="text-4xl lg:text-5xl font-extrabold tracking-tight mb-4">게시판 및 공지사항</h1>
-                <p class="text-[var(--samsung-text-sub)] text-lg">바이브 코딩과 함께 성장한 소중한 기록들입니다.</p>
+            <div class="flex items-end justify-between mb-16">
+                <div>
+                    <h1 class="text-4xl lg:text-5xl font-extrabold tracking-tight mb-4">게시판 및 공지사항</h1>
+                    <p class="text-[var(--samsung-text-sub)] text-lg">바이브 코딩과 함께 성장한 소중한 기록들입니다.</p>
+                </div>
+                <a th:href="@{/posts/new}" class="samsung-btn-primary flex items-center gap-2">
+                    <span class="material-symbols-outlined text-[20px]">add</span>
+                    새 글 작성
+                </a>
             </div>
 
             <div class="bg-white rounded-[32px] premium-shadow overflow-hidden border border-gray-100">
