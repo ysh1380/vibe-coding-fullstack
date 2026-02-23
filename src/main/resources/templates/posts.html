@@ -87,8 +87,10 @@
                         <tr th:each="post : ${posts}" class="hover:bg-gray-50 transition-colors cursor-pointer group">
                             <td class="px-8 py-6 text-sm text-[var(--samsung-text-sub)] font-medium"
                                 th:text="${post.no}">1</td>
-                            <td class="px-8 py-6 text-[16px] font-bold text-black group-hover:text-[var(--samsung-blue)] transition-colors"
-                                th:text="${post.title}">제목입니다</td>
+                            <td
+                                class="px-8 py-6 text-[16px] font-bold text-black group-hover:text-[var(--samsung-blue)] transition-colors">
+                                <a th:href="@{/posts/{no}(no=${post.no})}" th:text="${post.title}">제목입니다</a>
+                            </td>
                             <td class="px-8 py-6 text-sm text-[var(--samsung-text-sub)]"
                                 th:text="${#temporals.format(post.createdAt, 'yyyy-MM-dd')}">2024-02-23</td>
                             <td class="px-8 py-6 text-sm text-[var(--samsung-text-sub)] text-right font-mono"
