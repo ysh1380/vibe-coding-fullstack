@@ -71,7 +71,7 @@
                 <p class="text-[var(--samsung-text-sub)] text-lg">바이브 코딩 커뮤니티에 새로운 소식을 들려주세요.</p>
             </div>
 
-            <form onsubmit="alert('새 게시글 등록'); return false;" class="space-y-8">
+            <form th:action="@{/posts/add}" method="post" class="space-y-8">
                 <div>
                     <label for="title" class="block text-sm font-bold text-black mb-3 ml-1">제목</label>
                     <input type="text" id="title" name="title" required placeholder="제목을 입력해 주세요" class="samsung-input">

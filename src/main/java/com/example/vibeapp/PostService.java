@@ -2,6 +2,7 @@ package com.example.vibeapp;
 
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.Collections;
 import java.util.List;
 
@@ -25,5 +26,15 @@ public class PostService {
             post.setViews(post.getViews() + 1);
         }
         return post;
+    }
+
+    public void createPost(String title, String content) {
+        Post post = new Post();
+        post.setTitle(title);
+        post.setContent(content);
+        post.setCreatedAt(LocalDateTime.now());
+        post.setUpdatedAt(null);
+        post.setViews(0);
+        postRepository.save(post);
     }
 }
