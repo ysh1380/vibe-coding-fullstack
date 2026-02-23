@@ -2,6 +2,7 @@ package com.example.vibeapp;
 
 import org.springframework.stereotype.Service;
 
+import java.util.Collections;
 import java.util.List;
 
 @Service
@@ -13,7 +14,9 @@ public class PostService {
     }
 
     public List<Post> getPostList() {
-        return postRepository.findAll();
+        List<Post> posts = postRepository.findAll();
+        Collections.reverse(posts);
+        return posts;
     }
 
     public Post getPostDetail(Long no) {
