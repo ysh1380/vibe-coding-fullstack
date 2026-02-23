@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Vibe Coding | 커리큘럼 - 성공 사례</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700;800&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <style type="text/tailwindcss">
+        :root {
+            --samsung-blue: #0376ff;
+            --samsung-black: #000000;
+            --samsung-gray-bg: #f7f7f7;
+            --samsung-text-main: #000000;
+            --samsung-text-sub: #555555;
+        }
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            background-color: #ffffff;
+            color: var(--samsung-text-main);
+        }
+        .premium-shadow {
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+        }
+        .nav-link {
+            @apply text-[14px] font-medium text-black hover:text-[var(--samsung-blue)] transition-colors duration-300;
+        }
+        .samsung-btn-primary {
+            @apply bg-black text-white px-8 py-3 rounded-full font-bold hover:bg-gray-800 transition-all duration-300 text-[14px];
+        }
+    </style>
+</head>
+
+<body class="antialiased">
+    <header class="fixed top-0 w-full z-50 bg-white/90 backdrop-blur-md border-b border-gray-100">
+        <div class="max-w-[1440px] mx-auto px-6 lg:px-12 h-16 flex items-center justify-between">
+            <div class="flex items-center gap-10">
+                <a class="text-[20px] font-extrabold tracking-tighter flex items-center gap-2" th:href="@{/}">
+                    <span class="material-symbols-outlined text-[var(--samsung-blue)] font-bold">bolt</span>
+                    VIBE CODING
+                </a>
+                <nav class="hidden lg:flex items-center gap-8">
+                    <a class="nav-link" th:href="@{/}">커리큘럼</a>
+                    <a class="nav-link" th:href="@{/}">커뮤니티</a>
+                    <a class="nav-link" th:href="@{/}">멘토십</a>
+                    <a class="nav-link" th:href="@{/posts}">성공 사례</a>
+                </nav>
+            </div>
+            <div class="flex items-center gap-6">
+                <button class="text-[14px] font-bold">로그인</button>
+                <button class="samsung-btn-primary">시작하기</button>
+            </div>
+        </div>
+    </header>
+
+    <main class="pt-24 pb-32">
+        <section class="max-w-[1440px] mx-auto px-6 lg:px-12">
+            <div class="mb-16">
+                <h1 class="text-4xl lg:text-5xl font-extrabold tracking-tight mb-4">성공 사례 및 공지사항</h1>
+                <p class="text-[var(--samsung-text-sub)] text-lg">바이브 코딩과 함께 성장한 소중한 기록들입니다.</p>
+            </div>
+
+            <div class="bg-white rounded-[32px] premium-shadow overflow-hidden border border-gray-100">
+                <table class="w-full text-left border-collapse">
+                    <thead>
+                        <tr class="bg-[var(--samsung-gray-bg)] border-b border-gray-100">
+                            <th
+                                class="px-8 py-6 font-bold text-sm text-[var(--samsung-text-sub)] uppercase tracking-wider w-20">
+                                No</th>
+                            <th
+                                class="px-8 py-6 font-bold text-sm text-[var(--samsung-text-sub)] uppercase tracking-wider">
+                                제목</th>
+                            <th
+                                class="px-8 py-6 font-bold text-sm text-[var(--samsung-text-sub)] uppercase tracking-wider w-40">
+                                생성일</th>
+                            <th
+                                class="px-8 py-6 font-bold text-sm text-[var(--samsung-text-sub)] uppercase tracking-wider w-32 text-right">
+                                조회수</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-gray-50">
+                        <tr th:each="post : ${posts}" class="hover:bg-gray-50 transition-colors cursor-pointer group">
+                            <td class="px-8 py-6 text-sm text-[var(--samsung-text-sub)] font-medium"
+                                th:text="${post.no}">1</td>
+                            <td class="px-8 py-6 text-[16px] font-bold text-black group-hover:text-[var(--samsung-blue)] transition-colors"
+                                th:text="${post.title}">제목입니다</td>
+                            <td class="px-8 py-6 text-sm text-[var(--samsung-text-sub)]"
+                                th:text="${#temporals.format(post.createdAt, 'yyyy-MM-dd')}">2024-02-23</td>
+                            <td class="px-8 py-6 text-sm text-[var(--samsung-text-sub)] text-right font-mono"
+                                th:text="${#numbers.formatDecimal(post.views, 1, 'COMMA', 0, 'POINT')}">1,234</td>
+                        </tr>
+                        <tr th:if="${#lists.isEmpty(posts)}">
+                            <td colspan="4" class="px-8 py-20 text-center text-[var(--samsung-text-sub)]">
+                                게시글이 존재하지 않습니다.
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="mt-12 flex justify-center">
+                <nav class="flex items-center gap-2">
+                    <button
+                        class="w-10 h-10 flex items-center justify-center rounded-full bg-[var(--samsung-gray-bg)] text-gray-400 hover:text-black transition-colors">
+                        <span class="material-symbols-outlined text-sm">chevron_left</span>
+                    </button>
+                    <button
+                        class="w-10 h-10 flex items-center justify-center rounded-full bg-black text-white font-bold text-sm">1</button>
+                    <button
+                        class="w-10 h-10 flex items-center justify-center rounded-full text-sm font-medium hover:bg-[var(--samsung-gray-bg)] transition-colors">2</button>
+                    <button
+                        class="w-10 h-10 flex items-center justify-center rounded-full text-sm font-medium hover:bg-[var(--samsung-gray-bg)] transition-colors">3</button>
+                    <button
+                        class="w-10 h-10 flex items-center justify-center rounded-full bg-[var(--samsung-gray-bg)] text-gray-400 hover:text-black transition-colors">
+                        <span class="material-symbols-outlined text-sm">chevron_right</span>
+                    </button>
+                </nav>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-white border-t border-gray-100 py-16">
+        <div class="max-w-[1440px] mx-auto px-6 lg:px-12">
+            <div class="pt-8 border-t border-gray-100 flex flex-col md:flex-row justify-between items-center gap-6">
+                <p class="text-[13px] text-gray-400">© 2024 Vibe Coding Corp. All rights reserved. (Memory Storage
+                    Active)</p>
+                <div class="flex gap-6">
+                    <a class="text-gray-400 hover:text-black" href="#"><span
+                            class="material-symbols-outlined">share</span></a>
+                    <a class="text-gray-400 hover:text-black" href="#"><span
+                            class="material-symbols-outlined">language</span></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+
+</html>
