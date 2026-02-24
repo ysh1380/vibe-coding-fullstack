@@ -21,7 +21,7 @@
 - **프론트엔드 스타일**: Tailwind CSS (Premium Samsung Design Language 적용)
 - **데이터 저장**: In-memory List (현재 단계)
 - **주요 패턴 및 기능**:
-  - **DTO 패턴**: Layer 간 데이터 전송을 위한 DTO 분리 (`PostCreateDto`, `PostResponseDto` 등)
+  - **DTO 패턴 (Java Record)**: Layer 간 데이터 전송을 위해 간결하고 불변성을 보장하는 Java `record` 타입으로 DTO 정의
   - **Bean Validation**: 입력값 유효성 검증 (제목 필수, 최대 100자 제한)
 
 ## 3. 패키지 및 디렉토리 구조 상세

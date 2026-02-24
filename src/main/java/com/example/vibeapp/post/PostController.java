@@ -54,13 +54,13 @@ public class PostController {
             return "redirect:/posts";
         }
         model.addAttribute("post", post);
-        model.addAttribute("postUpdateDto", new PostUpdateDto(post.getTitle(), post.getContent()));
+        model.addAttribute("postUpdateDto", new PostUpdateDto(post.title(), post.content()));
         return "post/post_edit_form";
     }
 
     @GetMapping("/posts/new")
     public String newForm(Model model) {
-        model.addAttribute("postCreateDto", new PostCreateDto());
+        model.addAttribute("postCreateDto", new PostCreateDto(null, null));
         return "post/post_new_form";
     }
 
