@@ -1,28 +1,49 @@
 package com.example.vibeapp.post;
 
-import org.apache.ibatis.annotations.Mapper;
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.PersistenceContext;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
-@Mapper
-public interface PostTagRepository {
+@Repository
+public class PostTagRepository {
+
+    @PersistenceContext
+    private EntityManager em;
+
     /**
      * 특정 게시글의 태그 목록을 조회합니다.
      */
-    List<PostTag> findByPostNo(Long postNo);
+    public List<PostTag> findByPostNo(Long postNo) {
+        return em.createQuery("SELECT t FROM PostTag t WHERE t.postNo = :postNo", PostTag.class)
+                .setParameter("postNo", postNo)
+                .getResultList();
+    }
 
     /**
      * 새로운 태그를 추가합니다.
      */
-    void save(PostTag postTag);
+    public void save(PostTag postTag) {
+        em.persist(postTag);
+    }
 
     /**
      * 태그 ID로 특정 태그를 삭제합니다.
      */
-    void deleteById(Long id);
+    public void deleteById(Long id) {
+        PostTag tag = em.find(PostTag.class, id);
+        if (tag != null) {
+            em.remove(tag);
+        }
+    }
 
     /**
      * 특정 게시글의 모든 태그를 삭제합니다.
      */
-    void deleteByPostNo(Long postNo);
+    public void deleteByPostNo(Long postNo) {
+        em.createQuery("DELETE FROM PostTag t WHERE t.postNo = :postNo")
+                .setParameter("postNo", postNo)
+                .executeUpdate();
+    }
 }
