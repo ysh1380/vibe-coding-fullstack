@@ -1,13 +1,12 @@
 package com.example.vibeapp.post;
 
-import com.example.vibeapp.post.dto.PostListDto;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
 @Mapper
-public interface PostMapper {
+public interface PostRepository {
     List<Post> findAll();
     
     List<Post> findPaged(@Param("offset") int offset, @Param("size") int size);

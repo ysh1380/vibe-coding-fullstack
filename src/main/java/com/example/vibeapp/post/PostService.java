@@ -12,14 +12,14 @@ import java.util.List;
 
 @Service
 public class PostService {
-    private final PostMapper postMapper;
+    private final PostRepository postRepository;
 
-    public PostService(PostMapper postMapper) {
-        this.postMapper = postMapper;
+    public PostService(PostRepository postRepository) {
+        this.postRepository = postRepository;
     }
 
     private List<Post> findAllEntities() {
-        return postMapper.findAll();
+        return postRepository.findAll();
     }
 
     public List<PostListDto> findAll() {
@@ -30,38 +30,38 @@ public class PostService {
 
     public List<PostListDto> findPaged(int page, int size) {
         int offset = (page - 1) * size;
-        return postMapper.findPaged(offset, size).stream()
+        return postRepository.findPaged(offset, size).stream()
                 .map(PostListDto::from)
                 .toList();
     }
 
     public int getTotalPages(int size) {
-        int totalPosts = postMapper.countAll();
+        int totalPosts = postRepository.countAll();
         return (int) Math.ceil((double) totalPosts / size);
     }
 
     public PostResponseDto findById(Long no) {
-        postMapper.incrementViews(no);
-        Post post = postMapper.findByNo(no);
+        postRepository.incrementViews(no);
+        Post post = postRepository.findByNo(no);
         return PostResponseDto.from(post);
     }
 
     public void create(PostCreateDto dto) {
         Post post = dto.toEntity();
-        postMapper.save(post);
+        postRepository.save(post);
     }
 
     public void update(Long no, PostUpdateDto dto) {
-        Post post = postMapper.findByNo(no);
+        Post post = postRepository.findByNo(no);
         if (post != null) {
             post.setTitle(dto.title());
             post.setContent(dto.content());
             post.setUpdatedAt(LocalDateTime.now());
-            postMapper.update(post);
+            postRepository.update(post);
         }
     }
 
     public void deletePost(Long no) {
-        postMapper.deleteByNo(no);
+        postRepository.deleteByNo(no);
     }
 }
