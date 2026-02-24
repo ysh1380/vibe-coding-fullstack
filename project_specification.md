@@ -17,12 +17,13 @@
 - **언어**: Java 25
 - **프레임워크**: Spring Boot 4.0.1
 - **빌드 도구**: Gradle 9.3.0 (Groovy DSL)
-- **템플릿 엔진**: Thymeleaf
 - **프론트엔드 스타일**: Tailwind CSS (Premium Samsung Design Language 적용)
-- **데이터 저장**: In-memory List (현재 단계)
+- **데이터 저장**: H2 Database (File Mode: `./data/testdb`)
+- **영속성 프레임워크**: MyBatis (SQL Mapper)
 - **주요 패턴 및 기능**:
   - **DTO 패턴 (Java Record)**: Layer 간 데이터 전송을 위해 간결하고 불변성을 보장하는 Java `record` 타입으로 DTO 정의
   - **Bean Validation**: 입력값 유효성 검증 (제목 필수, 최대 100자 제한)
+  - **로깅 시스템**: 파일 기반 로깅 (`./logs/app.log`) 및 MyBatis 파라미터 로깅 활성화
 
 ## 3. 패키지 및 디렉토리 구조 상세
 ### 3.1. 소스 코드 (`src/main/java`)
