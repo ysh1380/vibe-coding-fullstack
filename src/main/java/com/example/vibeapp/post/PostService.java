@@ -1,5 +1,9 @@
 package com.example.vibeapp.post;
 
+import com.example.vibeapp.post.dto.PostCreateDto;
+import com.example.vibeapp.post.dto.PostListDto;
+import com.example.vibeapp.post.dto.PostResponseDto;
+import com.example.vibeapp.post.dto.PostUpdateDto;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
@@ -14,20 +18,28 @@ public class PostService {
         this.postRepository = postRepository;
     }
 
-    public List<Post> findAll() {
+    private List<Post> findAllEntities() {
         List<Post> posts = postRepository.findAll();
         Collections.reverse(posts);
         return posts;
     }
 
-    public List<Post> findPaged(int page, int size) {
-        List<Post> allPosts = findAll();
+    public List<PostListDto> findAll() {
+        return findAllEntities().stream()
+                .map(PostListDto::from)
+                .toList();
+    }
+
+    public List<PostListDto> findPaged(int page, int size) {
+        List<Post> allPosts = findAllEntities();
         int fromIndex = (page - 1) * size;
         if (allPosts.size() <= fromIndex) {
             return Collections.emptyList();
         }
         int toIndex = Math.min(fromIndex + size, allPosts.size());
-        return allPosts.subList(fromIndex, toIndex);
+        return allPosts.subList(fromIndex, toIndex).stream()
+                .map(PostListDto::from)
+                .toList();
     }
 
     public int getTotalPages(int size) {
@@ -35,29 +47,24 @@ public class PostService {
         return (int) Math.ceil((double) totalPosts / size);
     }
 
-    public Post findById(Long no) {
+    public PostResponseDto findById(Long no) {
         Post post = postRepository.findByNo(no);
         if (post != null) {
             post.setViews(post.getViews() + 1);
         }
-        return post;
+        return PostResponseDto.from(post);
     }
 
-    public void createPost(String title, String content) {
-        Post post = new Post();
-        post.setTitle(title);
-        post.setContent(content);
-        post.setCreatedAt(LocalDateTime.now());
-        post.setUpdatedAt(null);
-        post.setViews(0);
+    public void create(PostCreateDto dto) {
+        Post post = dto.toEntity();
         postRepository.save(post);
     }
 
-    public void updatePost(Long no, String title, String content) {
+    public void update(Long no, PostUpdateDto dto) {
         Post post = postRepository.findByNo(no);
         if (post != null) {
-            post.setTitle(title);
-            post.setContent(content);
+            post.setTitle(dto.getTitle());
+            post.setContent(dto.getContent());
             post.setUpdatedAt(LocalDateTime.now());
         }
     }

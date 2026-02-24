@@ -71,15 +71,17 @@
                 <p class="text-[var(--samsung-text-sub)] text-lg">바이브 코딩 커뮤니티에 새로운 소식을 들려주세요.</p>
             </div>
 
-            <form th:action="@{/posts/add}" method="post" class="space-y-8">
+            <form th:action="@{/posts/add}" th:object="${postCreateDto}" method="post" class="space-y-8">
                 <div>
                     <label for="title" class="block text-sm font-bold text-black mb-3 ml-1">제목</label>
-                    <input type="text" id="title" name="title" required placeholder="제목을 입력해 주세요" class="samsung-input">
+                    <input type="text" id="title" th:field="*{title}" placeholder="제목을 입력해 주세요" class="samsung-input"
+                        th:classappend="${#fields.hasErrors('title')} ? 'border-red-500 focus:border-red-500 focus:ring-red-500' : ''">
+                    <p th:if="${#fields.hasErrors('title')}" th:errors="*{title}"
+                        class="mt-2 text-sm text-red-600 ml-1"></p>
                 </div>
 
                 <div>
-                    <label for="content" class="block text-sm font-bold text-black mb-3 ml-1">내용</label>
-                    <textarea id="content" name="content" required rows="12" placeholder="내용을 입력해 주세요"
+                    <textarea id="content" th:field="*{content}" rows="12" placeholder="내용을 입력해 주세요"
                         class="samsung-input resize-none"></textarea>
                 </div>
 
