@@ -1,4 +1,4 @@
-INSERT INTO POST (title, content, created_at, updated_at, views) VALUES 
+INSERT INTO POSTS (title, content, created_at, updated_at, views) VALUES 
 ('바이브 코딩과 함께하는 프리미엄 교육 1', '이것은 서버 사이드 렌더링된 게시글 내용입니다. 1', CURRENT_TIMESTAMP - 10, CURRENT_TIMESTAMP - 10, 100),
 ('바이브 코딩과 함께하는 프리미엄 교육 2', '이것은 서버 사이드 렌더링된 게시글 내용입니다. 2', CURRENT_TIMESTAMP - 9, CURRENT_TIMESTAMP - 9, 200),
 ('바이브 코딩과 함께하는 프리미엄 교육 3', '이것은 서버 사이드 렌더링된 게시글 내용입니다. 3', CURRENT_TIMESTAMP - 8, CURRENT_TIMESTAMP - 8, 300),

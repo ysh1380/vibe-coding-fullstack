@@ -46,6 +46,18 @@
   - `post_edit_form.html`: 기존 게시글 수정 폼
 
 ## 4. 주요 기능 및 엔드포인트
+#### 3.2.1. 테이블 설계: `POSTS`
+이 테이블은 게시글의 핵심 데이터를 저장합니다.
+
+| 컬럼명 | 데이터 타입 | 제약 조건 | 설명 |
+| :--- | :--- | :--- | :--- |
+| `no` | `BIGINT` | `PK`, `AUTO_INCREMENT` | 게시글 고유 번호 |
+| `title` | `VARCHAR(200)` | `NOT NULL` | 게시글 제목 (최대 200자) |
+| `content` | `CLOB` | `NOT NULL` | 게시글 내용 (최대 10MB) |
+| `created_at` | `TIMESTAMP` | `DEFAULT CURRENT_TIMESTAMP` | 최초 작성 일시 |
+| `updated_at` | `TIMESTAMP` | `DEFAULT NULL` | 최종 수정 일시 |
+| `views` | `INT` | `DEFAULT 0` | 조회수 |
+
 ### 4.1. 게시판 기능 (Board Features)
 | 기능 | URL | 메서드 | 뷰 경로 | 주요 처리 로직 |
 | :-- | :-- | :-- | :-- | :-- |
