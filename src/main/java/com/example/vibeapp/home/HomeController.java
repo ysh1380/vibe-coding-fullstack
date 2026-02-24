@@ -14,6 +14,6 @@ public class HomeController {
     public String home(Model model) {
         String serverTime = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
         model.addAttribute("serverTime", serverTime);
-        return "home";
+        return "home/home";
     }
 }
