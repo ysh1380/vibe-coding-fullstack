@@ -2,8 +2,15 @@ package com.example.vibeapp.post;
 
 import org.apache.ibatis.annotations.Mapper;
 
+import java.util.List;
+
 @Mapper
 public interface PostTagRepository {
+    /**
+     * 특정 게시글의 태그 목록을 조회합니다.
+     */
+    List<PostTag> findByPostNo(Long postNo);
+
     /**
      * 새로운 태그를 추가합니다.
      */

@@ -86,6 +86,14 @@
                 <h1 class="text-4xl lg:text-5xl font-extrabold tracking-tight mb-8 leading-tight"
                     th:text="${post.title}">게시글 제목입니다</h1>
 
+                <!-- 태그 목록 출력 -->
+                <div class="flex flex-wrap gap-2 mb-8" th:if="${not #lists.isEmpty(post.tags)}">
+                    <span th:each="tag : ${post.tags}"
+                        class="px-4 py-1.5 rounded-full bg-[var(--samsung-gray-bg)] text-[var(--samsung-blue)] text-sm font-bold border border-blue-100">
+                        #<span th:text="${tag}">태그</span>
+                    </span>
+                </div>
+
                 <div class="flex flex-wrap items-center gap-6 pb-8 border-b border-gray-100">
                     <div class="flex items-center gap-2">
                         <span class="material-symbols-outlined text-gray-400 text-[18px]">tag</span>

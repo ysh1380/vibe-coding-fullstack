@@ -115,6 +115,11 @@
                         class="samsung-input resize-none"></textarea>
                 </div>
 
+                <div>
+                    <label for="tags" class="block text-sm font-bold text-black mb-3 ml-1">태그 (쉼표로 구분)</label>
+                    <input type="text" id="tags" th:field="*{tags}" placeholder="태그1, 태그2, 태그3" class="samsung-input">
+                </div>
+
                 <div class="flex items-center justify-center gap-4 pt-8 border-t border-gray-50">
                     <a th:href="@{/posts/{no}(no=${post.no})}" class="samsung-btn-outline">
                         취소
