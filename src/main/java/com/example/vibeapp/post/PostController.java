@@ -20,7 +20,7 @@ public class PostController {
     @GetMapping("/posts")
     public String list(@RequestParam(value = "page", defaultValue = "1") int page, Model model) {
         int pageSize = 5;
-        List<Post> posts = postService.getPagedPostList(page, pageSize);
+        List<Post> posts = postService.findPaged(page, pageSize);
         int totalPages = postService.getTotalPages(pageSize);
         
         model.addAttribute("posts", posts);
@@ -32,7 +32,7 @@ public class PostController {
 
     @GetMapping("/posts/{no}")
     public String detail(@PathVariable("no") Long no, Model model) {
-        Post post = postService.getPostDetail(no);
+        Post post = postService.findById(no);
         if (post == null) {
             return "redirect:/posts";
         }
@@ -42,7 +42,7 @@ public class PostController {
 
     @GetMapping("/posts/{no}/edit")
     public String editForm(@PathVariable("no") Long no, Model model) {
-        Post post = postService.getPostDetail(no);
+        Post post = postService.findById(no);
         if (post == null) {
             return "redirect:/posts";
         }
@@ -56,13 +56,13 @@ public class PostController {
     }
 
     @PostMapping("/posts/add")
-    public String add(@RequestParam("title") String title, @RequestParam("content") String content) {
+    public String create(@RequestParam("title") String title, @RequestParam("content") String content) {
         postService.createPost(title, content);
         return "redirect:/posts";
     }
 
     @PostMapping("/posts/{no}/save")
-    public String saveUpdate(@PathVariable("no") Long no, @RequestParam("title") String title, @RequestParam("content") String content) {
+    public String update(@PathVariable("no") Long no, @RequestParam("title") String title, @RequestParam("content") String content) {
         postService.updatePost(no, title, content);
         return "redirect:/posts/" + no;
     }

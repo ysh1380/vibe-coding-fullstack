@@ -14,14 +14,14 @@ public class PostService {
         this.postRepository = postRepository;
     }
 
-    public List<Post> getPostList() {
+    public List<Post> findAll() {
         List<Post> posts = postRepository.findAll();
         Collections.reverse(posts);
         return posts;
     }
 
-    public List<Post> getPagedPostList(int page, int size) {
-        List<Post> allPosts = getPostList();
+    public List<Post> findPaged(int page, int size) {
+        List<Post> allPosts = findAll();
         int fromIndex = (page - 1) * size;
         if (allPosts.size() <= fromIndex) {
             return Collections.emptyList();
@@ -35,7 +35,7 @@ public class PostService {
         return (int) Math.ceil((double) totalPosts / size);
     }
 
-    public Post getPostDetail(Long no) {
+    public Post findById(Long no) {
         Post post = postRepository.findByNo(no);
         if (post != null) {
             post.setViews(post.getViews() + 1);
