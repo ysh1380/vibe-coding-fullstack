@@ -1,4 +1,4 @@
-package com.example.vibeapp;
+package com.example.vibeapp.post;
 
 import org.springframework.stereotype.Service;
 
@@ -18,6 +18,21 @@ public class PostService {
         List<Post> posts = postRepository.findAll();
         Collections.reverse(posts);
         return posts;
+    }
+
+    public List<Post> getPagedPostList(int page, int size) {
+        List<Post> allPosts = getPostList();
+        int fromIndex = (page - 1) * size;
+        if (allPosts.size() <= fromIndex) {
+            return Collections.emptyList();
+        }
+        int toIndex = Math.min(fromIndex + size, allPosts.size());
+        return allPosts.subList(fromIndex, toIndex);
+    }
+
+    public int getTotalPages(int size) {
+        int totalPosts = postRepository.findAll().size();
+        return (int) Math.ceil((double) totalPosts / size);
     }
 
     public Post getPostDetail(Long no) {

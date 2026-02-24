@@ -1,4 +1,4 @@
-package com.example.vibeapp;
+package com.example.vibeapp.post;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -18,9 +18,15 @@ public class PostController {
     }
 
     @GetMapping("/posts")
-    public String list(Model model) {
-        List<Post> posts = postService.getPostList();
+    public String list(@RequestParam(value = "page", defaultValue = "1") int page, Model model) {
+        int pageSize = 5;
+        List<Post> posts = postService.getPagedPostList(page, pageSize);
+        int totalPages = postService.getTotalPages(pageSize);
+        
         model.addAttribute("posts", posts);
+        model.addAttribute("currentPage", page);
+        model.addAttribute("totalPages", totalPages);
+        
         return "posts";
     }
 
