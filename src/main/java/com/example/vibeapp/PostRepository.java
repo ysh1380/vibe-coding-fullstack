@@ -39,6 +39,10 @@ public class PostRepository {
                 .orElse(null);
     }
 
+    public void deleteByNo(Long no) {
+        posts.removeIf(p -> p.getNo().equals(no));
+    }
+
     public void save(Post post) {
         if (post.getNo() == null) {
             long nextNo = posts.stream()
