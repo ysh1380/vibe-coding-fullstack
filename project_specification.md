@@ -43,24 +43,24 @@
 
 ## 4. 주요 기능 및 엔드포인트
 ### 4.1. 게시판 기능 (Board Features)
-| 기능 | URL | 메서드 | 뷰 경로 | 설명 |
+| 기능 | URL | 메서드 | 뷰 경로 | 주요 처리 로직 |
 | :-- | :-- | :-- | :-- | :-- |
-| 목록 조회 | `/posts` | GET | `post/posts` | 페이징 처리(5개/P)된 목록 출력 |
-| 상세 조회 | `/posts/{no}` | GET | `post/post_detail` | 게시글 내용 조회 및 조회수 증가 |
-| 새 글 작성 폼 | `/posts/new` | GET | `post/post_new_form` | 작성 화면 이동 |
-| 새 글 등록 | `/posts/add` | POST | N/A | 게시글 데이터 저장 후 목록 이동 |
-| 수정 폼 | `/posts/{no}/edit` | GET | `post/post_edit_form` | 기존 데이터 로드 및 수정 화면 이동 |
-| 수정 저장 | `/posts/{no}/save` | POST | N/A | 변경 정보 반영 후 상세 페이지 이동 |
-| 삭제 처리 | `/posts/{no}/delete` | GET | N/A | 데이터 제거 후 목록 이동 |
+| 목록 조회 | `/posts` | GET | `post/posts` | 최신순 정렬 및 페이지 단위(5개) 데이터 반환 |
+| 상세 조회 | `/posts/{no}` | GET | `post/post_detail` | 특정 게시글 검색 및 조회수(Views) 1 증가 |
+| 작성 화면 | `/posts/new` | GET | `post/post_new_form` | 신규 게시글 작성을 위한 입력 폼 노출 |
+| 게시글 등록 | `/posts/add` | POST | N/A | 신규 게시글 유효성 검증 및 데이터 저장소 저장 |
+| 수정 화면 | `/posts/{no}/edit` | GET | `post/post_edit_form` | 기존 데이터 로드 및 수정 입력 인터페이스 제공 |
+| 수정 반영 | `/posts/{no}/save` | POST | N/A | 변경된 제목 및 내용 업데이트 및 수정일시 기록 |
+| 게시글 삭제 | `/posts/{no}/delete` | GET | N/A | 식별자(no) 기반 데이터 영구 제거 |
 
-### 4.2. 시스템 및 테스트 API
-- **메인 홈**: `/` (GET, `home/home`)
-- **테스트용 API**: `/api/hello` (GET) - "Hello, Vibe!" 반환
+### 4.2. 공통 및 시스템 서비스
+- **브랜드 홈**: `/` (GET, `home/home`) - 바이브 코딩 서비스 소개 및 서버 시간 출력
+- **상태 확인 API**: `/api/hello` (GET) - 시스템 가동 상태 확인용 헬로 월드 응답
 
 ## 5. UI/UX 디자인 가이드라인
-- **디자인 컨셉**: Samsung Premium Design (Modern, Minimal, Vibrant)
-- **주요 요소**:
-  - `full-rounded` 버튼 및 카드 레이아웃
-  - `Premium Shadow` 및 `Backdrop Blur` 효과
-  - HSL 미세 조정된 세련된 블루 포인트 컬러 (`#0376ff`)
-  - 인터렉티브 호버 애니메이션 및 마이크로 인터렉션 반영
+- **디자인 철학**: Samsung Premium Design Language (Simplicity, Modernity, Vibrancy)
+- **핵심 UI 컴포넌트**:
+  - **Cards**: `bg-white/80 backdrop-blur-md` 기반의 투명도 있는 프리미엄 카드
+  - **Typography**: `Inter` 및 `Outfit` 폰트 기반의 가독성 높은 헤드라인
+  - **Interaction**: 버튼 클릭 및 호버 시 `transition-all duration-300` 기반의 부드러운 스케일 애니메이션
+  - **Color Palette**: `#0376ff` (Vibrant Blue), `#18181b` (Deep Charcoal), `#f4f4f5` (Zinc Silver)
