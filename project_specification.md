@@ -58,6 +58,15 @@
 | `updated_at` | `TIMESTAMP` | `DEFAULT NULL` | 최종 수정 일시 |
 | `views` | `INT` | `DEFAULT 0` | 조회수 |
 
+#### 3.2.2. 테이블 설계: `POST_TAGS`
+게시글별 태그 정보를 저장합니다.
+
+| 컬럼명 | 데이터 타입 | 제약 조건 | 설명 |
+| :--- | :--- | :--- | :--- |
+| `id` | `BIGINT` | `PK`, `AUTO_INCREMENT` | 태그 고유 ID |
+| `post_no` | `BIGINT` | `FK (POSTS.no)`, `NOT NULL` | 게시글 번호 |
+| `tag_name` | `VARCHAR(50)` | `NOT NULL` | 태그 이름 (최대 50자) |
+
 ### 4.1. 게시판 기능 (Board Features)
 | 기능 | URL | 메서드 | 뷰 경로 | 주요 처리 로직 |
 | :-- | :-- | :-- | :-- | :-- |
