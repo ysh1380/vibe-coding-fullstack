@@ -40,10 +40,15 @@ public class PostService {
         return (int) Math.ceil((double) totalPosts / size);
     }
 
-    public PostResponseDto findById(Long no) {
+    public PostResponseDto getPostDetail(Long no) {
         postRepository.incrementViews(no);
         Post post = postRepository.findByNo(no);
-        return PostResponseDto.from(post);
+        return post != null ? PostResponseDto.from(post) : null;
+    }
+
+    public PostResponseDto findById(Long no) {
+        Post post = postRepository.findByNo(no);
+        return post != null ? PostResponseDto.from(post) : null;
     }
 
     public void create(PostCreateDto dto) {

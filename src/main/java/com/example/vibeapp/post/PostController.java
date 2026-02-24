@@ -39,7 +39,7 @@ public class PostController {
 
     @GetMapping("/posts/{no}")
     public String detail(@PathVariable("no") Long no, Model model) {
-        PostResponseDto post = postService.findById(no);
+        PostResponseDto post = postService.getPostDetail(no);
         if (post == null) {
             return "redirect:/posts";
         }
