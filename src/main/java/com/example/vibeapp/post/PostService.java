@@ -5,6 +5,7 @@ import com.example.vibeapp.post.dto.PostListDto;
 import com.example.vibeapp.post.dto.PostResponseDto;
 import com.example.vibeapp.post.dto.PostUpdateDto;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDateTime;
 import java.util.Collections;
@@ -65,6 +66,7 @@ public class PostService {
         return PostResponseDto.from(post, tags);
     }
 
+    @Transactional
     public void create(PostCreateDto dto) {
         Post post = dto.toEntity();
         postRepository.save(post);
@@ -72,6 +74,7 @@ public class PostService {
         saveTags(post.getNo(), dto.tags());
     }
 
+    @Transactional
     public void update(Long no, PostUpdateDto dto) {
         Post post = postRepository.findByNo(no);
         if (post != null) {
@@ -86,6 +89,7 @@ public class PostService {
         }
     }
 
+    @Transactional
     public void deletePost(Long no) {
         // 외래키 설정(ON DELETE CASCADE)으로 자동 삭제되지만, 명시적으로 처리 가능
         // postTagRepository.deleteByPostNo(no); 
